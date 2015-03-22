@@ -1,0 +1,433 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 22, 2015 - 16:42:37
+Django version 1.9.dev20150322143154, using settings 'callable_as_default.settings'
+Starting development server at http://localhost:8003/
+Quit the server with CONTROL-C.
+/home/dev/django-dev/django/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-03-22 16:44:05.353370) while time zone support is active.
+  RuntimeWarning)
+
+/home/dev/django-dev/django/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-03-22 16:44:05.451903) while time zone support is active.
+  RuntimeWarning)
+
+> /home/dev/django-dev/callable_as_default/sample_project/cad/models.py(5)get_title()
+      4     import ipdb; ipdb.set_trace()
+----> 5     count_cache.append(None)
+      6     n = len(count_cache)
+
+ipdb> continue
+1
+> /home/dev/django-dev/callable_as_default/sample_project/cad/models.py(5)get_title()
+      4     import ipdb; ipdb.set_trace()
+----> 5     count_cache.append(None)
+      6     n = len(count_cache)
+
+ipdb> continue
+2
+> /home/dev/django-dev/callable_as_default/sample_project/cad/models.py(5)get_title()
+      4     import ipdb; ipdb.set_trace()
+----> 5     count_cache.append(None)
+      6     n = len(count_cache)
+
+ipdb> where
+  /usr/lib/python2.7/threading.py(783)__bootstrap()
+    781         # if a non-daemonic encounters this, something else is wrong.
+    782         try:
+--> 783             self.__bootstrap_inner()
+    784         except:
+    785             if self.__daemonic and _sys is None:
+
+  /usr/lib/python2.7/threading.py(810)__bootstrap_inner()
+    808
+    809             try:
+--> 810                 self.run()
+    811             except SystemExit:
+    812                 if __debug__:
+
+  /usr/lib/python2.7/threading.py(763)run()
+    761         try:
+    762             if self.__target:
+--> 763                 self.__target(*self.__args, **self.__kwargs)
+    764         finally:
+    765             # Avoid a refcycle if the thread is running a function with
+
+  /usr/lib/python2.7/SocketServer.py(593)process_request_thread()
+    591         """
+    592         try:
+--> 593             self.finish_request(request, client_address)
+    594             self.shutdown_request(request)
+    595         except:
+
+  /usr/lib/python2.7/SocketServer.py(334)finish_request()
+    332     def finish_request(self, request, client_address):
+    333         """Finish one request by instantiating RequestHandlerClass."""
+--> 334         self.RequestHandlerClass(request, client_address, self)
+    335
+    336     def shutdown_request(self, request):
+
+  /home/dev/django-dev/django/django/core/servers/basehttp.py(99)__init__()
+     97     def __init__(self, *args, **kwargs):
+     98         self.style = color_style()
+---> 99         super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+    100
+    101     def address_string(self):
+
+  /usr/lib/python2.7/SocketServer.py(649)__init__()
+    647         self.setup()
+    648         try:
+--> 649             self.handle()
+    650         finally:
+    651             self.finish()
+
+  /home/dev/django-dev/django/django/core/servers/basehttp.py(179)handle()
+    177         )
+    178         handler.request_handler = self      # backpointer for logging
+--> 179         handler.run(self.server.get_app())
+    180
+    181
+
+  /usr/lib/python2.7/wsgiref/handlers.py(85)run()
+     83         try:
+     84             self.setup_environ()
+---> 85             self.result = application(self.environ, self.start_response)
+     86             self.finish_response()
+     87         except:
+
+  /home/dev/django-dev/django/django/contrib/staticfiles/handlers.py(63)__call__()
+     60
+     61     def __call__(self, environ, start_response):
+     62         if not self._should_handle(get_path_info(environ)):
+---> 63             return self.application(environ, start_response)
+     64         return super(StaticFilesHandler, self).__call__(environ, start_response)
+
+  /home/dev/django-dev/django/django/core/handlers/wsgi.py(177)__call__()
+    175             response = http.HttpResponseBadRequest()
+    176         else:
+--> 177             response = self.get_response(request)
+    178
+    179         response._handler_class = self.__class__
+
+  /home/dev/django-dev/django/django/core/handlers/base.py(163)get_response()
+    161                             "HttpResponse object. It returned None instead."
+    162                             % (middleware_method.__self__.__class__.__name__))
+--> 163                 response = response.render()
+    164
+    165         except http.Http404 as e:
+
+  /home/dev/django-dev/django/django/template/response.py(158)render()
+    156         retval = self
+    157         if not self._is_rendered:
+--> 158             self.content = self.rendered_content
+    159             for post_callback in self._post_render_callbacks:
+    160                 newretval = post_callback(retval)
+
+  /home/dev/django-dev/django/django/template/response.py(135)rendered_content()
+    133         template = self._resolve_template(self.template_name)
+    134         context = self._resolve_context(self.context_data)
+--> 135         content = template.render(context, self._request)
+    136         return content
+    137
+
+  /home/dev/django-dev/django/django/template/backends/django.py(74)render()
+     70
+     71         else:
+     72             context = make_context(context, request)
+     73
+---> 74         return self.template.render(context)
+
+  /home/dev/django-dev/django/django/template/base.py(212)render()
+    210             if context.template is None:
+    211                 with context.bind_template(self):
+--> 212                     return self._render(context)
+    213             else:
+    214                 return self._render(context)
+
+  /home/dev/django-dev/django/django/template/base.py(204)_render()
+    202
+    203     def _render(self, context):
+--> 204         return self.nodelist.render(context)
+    205
+    206     def render(self, context):
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/loader_tags.py(135)render()
+    133         # Call Template._render explicitly so the parser context stays
+    134         # the same.
+--> 135         return compiled_parent._render(context)
+    136
+    137
+
+  /home/dev/django-dev/django/django/template/base.py(204)_render()
+    202
+    203     def _render(self, context):
+--> 204         return self.nodelist.render(context)
+    205
+    206     def render(self, context):
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/loader_tags.py(135)render()
+    133         # Call Template._render explicitly so the parser context stays
+    134         # the same.
+--> 135         return compiled_parent._render(context)
+    136
+    137
+
+  /home/dev/django-dev/django/django/template/base.py(204)_render()
+    202
+    203     def _render(self, context):
+--> 204         return self.nodelist.render(context)
+    205
+    206     def render(self, context):
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/loader_tags.py(65)render()
+     63                 block.context = context
+     64                 context['block'] = block
+---> 65                 result = block.nodelist.render(context)
+     66                 if push is not None:
+     67                     block_context.push(self.name, push)
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/loader_tags.py(65)render()
+     63                 block.context = context
+     64                 context['block'] = block
+---> 65                 result = block.nodelist.render(context)
+     66                 if push is not None:
+     67                     block_context.push(self.name, push)
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/defaulttags.py(214)render()
+    212
+    213                 for node in self.nodelist_loop:
+--> 214                     nodelist.append(node.render_annotated(context))
+    215
+    216                 if pop_context:
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/loader_tags.py(159)render()
+    157                 return template.render(context.new(values))
+    158             with context.push(**values):
+--> 159                 return template.render(context)
+    160         except Exception:
+    161             if context.template.engine.debug:
+
+  /home/dev/django-dev/django/django/template/base.py(214)render()
+    212                     return self._render(context)
+    213             else:
+--> 214                 return self._render(context)
+    215         finally:
+    216             context.render_context.pop()
+
+  /home/dev/django-dev/django/django/template/base.py(204)_render()
+    202
+    203     def _render(self, context):
+--> 204         return self.nodelist.render(context)
+    205
+    206     def render(self, context):
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/defaulttags.py(214)render()
+    212
+    213                 for node in self.nodelist_loop:
+--> 214                     nodelist.append(node.render_annotated(context))
+    215
+    216                 if pop_context:
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/defaulttags.py(214)render()
+    212
+    213                 for node in self.nodelist_loop:
+--> 214                     nodelist.append(node.render_annotated(context))
+    215
+    216                 if pop_context:
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/defaulttags.py(320)render()
+    318
+    319             if match:
+--> 320                 return nodelist.render(context)
+    321
+    322         return ''
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/defaulttags.py(320)render()
+    318
+    319             if match:
+--> 320                 return nodelist.render(context)
+    321
+    322         return ''
+
+  /home/dev/django-dev/django/django/template/base.py(958)render()
+    956         for node in self:
+    957             if isinstance(node, Node):
+--> 958                 bit = node.render_annotated(context)
+    959             else:
+    960                 bit = node
+
+  /home/dev/django-dev/django/django/template/base.py(925)render_annotated()
+    923         """
+    924         try:
+--> 925             return self.render(context)
+    926         except Exception as e:
+    927             if context.template.engine.debug and not hasattr(e, 'template_debug'):
+
+  /home/dev/django-dev/django/django/template/base.py(1015)render()
+   1013             # quietly.
+   1014             return ''
+-> 1015         return render_value_in_context(output, context)
+   1016
+   1017 # Regex for token keyword arguments
+
+  /home/dev/django-dev/django/django/template/base.py(992)render_value_in_context()
+    990     value = template_localtime(value, use_tz=context.use_tz)
+    991     value = localize(value, use_l10n=context.use_l10n)
+--> 992     value = force_text(value)
+    993     if ((context.autoescape and not isinstance(value, SafeData)) or
+    994             isinstance(value, EscapeData)):
+
+  /home/dev/django-dev/django/django/utils/encoding.py(92)force_text()
+     90                     s = six.text_type(s)
+     91             elif hasattr(s, '__unicode__'):
+---> 92                 s = six.text_type(s)
+     93             else:
+     94                 s = six.text_type(bytes(s), encoding, errors)
+
+  /home/dev/django-dev/django/django/forms/forms.py(530)__str__()
+    528         """Renders this field as an HTML widget."""
+    529         if self.field.show_hidden_initial:
+--> 530             return self.as_widget() + self.as_hidden(only_initial=True)
+    531         return self.as_widget()
+    532
+
+  /home/dev/django-dev/django/django/forms/forms.py(587)as_widget()
+    585         else:
+    586             name = self.html_initial_name
+--> 587         return force_text(widget.render(name, self.value(), attrs=attrs))
+    588
+    589     def as_text(self, attrs=None, **kwargs):
+
+  /home/dev/django-dev/django/django/forms/forms.py(623)value()
+    621                     data = self._initial_value
+    622                 else:
+--> 623                     data = data()
+    624                     # If this is an auto-generated default date, nix the
+    625                     # microseconds for standardized handling. See #22502.
+
+> /home/dev/django-dev/callable_as_default/sample_project/cad/models.py(5)get_title()
+      3 def get_title(count_cache=[]):
+      4     import ipdb; ipdb.set_trace()
+----> 5     count_cache.append(None)
+      6     n = len(count_cache)
+      7     print n
+
+ipdb>
